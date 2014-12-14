@@ -1,0 +1,35 @@
+---
+layout: page
+---
+
+<div class="home">
+
+  <h1 class="page-heading">Iain's Projects</h1> 
+
+  <ul class="post-list">
+
+    {% for post in site.projects %}
+
+
+      {% assign path = post.url | replace: '/',' ' %}
+
+      {% if path | split: ' ' | last contains 'index' %}
+        {% unless path contains '_posts' %}
+
+          <li>
+            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+            <h2>
+              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h2>
+          </li>
+
+        {% endunless %}
+      {% endif %}
+
+    {% endfor %}
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
